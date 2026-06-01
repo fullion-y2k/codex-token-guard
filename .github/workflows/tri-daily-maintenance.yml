@@ -59,7 +59,7 @@ jobs:
       - run: node ./src/cli.js brief "improve Codex context management for open-source maintainers"
       - run: node ./scripts/refresh-maintenance-assets.js
       - run: npm test
-      - uses: peter-evans/create-pull-request@v7
+      - uses: peter-evans/create-pull-request@v8
         with:
           branch: automation/tri-daily-maintenance
           delete-branch: true

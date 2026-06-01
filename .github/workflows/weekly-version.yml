@@ -21,7 +21,7 @@ jobs:
       - run: npm test
       - run: npm run version:weekly
       - run: npm test
-      - uses: peter-evans/create-pull-request@v7
+      - uses: peter-evans/create-pull-request@v8
         with:
           branch: automation/weekly-version
           delete-branch: true
