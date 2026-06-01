@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
   schedule:
     # Monday 00:00 Asia/Tokyo.
-    - cron: "0 0 * * 1"
-      timezone: "Asia/Tokyo"
+    # GitHub Actions cron is UTC.
+    - cron: "0 15 * * 0"
 
 permissions:
   contents: write

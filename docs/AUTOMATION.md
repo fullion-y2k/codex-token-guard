@@ -11,6 +11,8 @@
 | Weekly Version PR | `.github/workflows/weekly-version.yml` | Monday 00:00 Asia/Tokyo or manual dispatch | Bump the patch version, update `CHANGELOG.md`, and open a PR. |
 | Tri-daily Maintenance PR | `.github/workflows/tri-daily-maintenance.yml` | 09:00, 15:00, and 21:00 Asia/Tokyo or manual dispatch | Smoke-test the CLI and refresh maintainer-facing docs during the application campaign. |
 
+GitHub Actions stores scheduled workflow times as UTC cron expressions. The workflow comments document the intended Asia/Tokyo schedule beside the UTC cron values.
+
 ## Campaign Rules
 
 The tri-daily workflow is temporary for the June 3, 2026 Codex for Open Source application target.

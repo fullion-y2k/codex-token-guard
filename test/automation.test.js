@@ -16,10 +16,14 @@ test("CI workflow matches the automation specification", async () => {
 test("tri-daily maintenance is PR-based and campaign-limited", async () => {
   const workflow = await read(".github/workflows/tri-daily-maintenance.yml");
 
-  assert.match(workflow, /cron:\s*"0 9 \* \* \*"/);
-  assert.match(workflow, /cron:\s*"0 15 \* \* \*"/);
-  assert.match(workflow, /cron:\s*"0 21 \* \* \*"/);
-  assert.match(workflow, /timezone:\s*"Asia\/Tokyo"/);
+  assert.match(workflow, /09:00, 15:00, and 21:00 Asia\/Tokyo/);
+  assert.match(workflow, /GitHub Actions cron is UTC/);
+  assert.match(workflow, /cron:\s*"0 0 \* \* \*"/);
+  assert.match(workflow, /cron:\s*"0 6 \* \* \*"/);
+  assert.match(workflow, /cron:\s*"0 12 \* \* \*"/);
+  assert.match(workflow, /"0 0 \* \* \*"\) focus="docs"/);
+  assert.match(workflow, /"0 6 \* \* \*"\) focus="quality"/);
+  assert.match(workflow, /"0 12 \* \* \*"\) focus="release"/);
   assert.match(workflow, /MAINTENANCE_CAMPAIGN_END_DATE:\s*"2026-06-03"/);
   assert.match(workflow, /peter-evans\/create-pull-request@v8/);
   assert.match(workflow, /branch:\s*automation\/tri-daily-maintenance/);
@@ -30,8 +34,9 @@ test("tri-daily maintenance is PR-based and campaign-limited", async () => {
 test("weekly version automation opens a reviewable PR", async () => {
   const workflow = await read(".github/workflows/weekly-version.yml");
 
-  assert.match(workflow, /cron:\s*"0 0 \* \* 1"/);
-  assert.match(workflow, /timezone:\s*"Asia\/Tokyo"/);
+  assert.match(workflow, /Monday 00:00 Asia\/Tokyo/);
+  assert.match(workflow, /GitHub Actions cron is UTC/);
+  assert.match(workflow, /cron:\s*"0 15 \* \* 0"/);
   assert.match(workflow, /npm run version:weekly/);
   assert.match(workflow, /peter-evans\/create-pull-request@v8/);
   assert.match(workflow, /branch:\s*automation\/weekly-version/);
