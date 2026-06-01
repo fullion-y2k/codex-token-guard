@@ -1,6 +1,6 @@
 {
   "name": "codex-token-guard",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generate focused Codex context briefs to reduce wasted repository context.",
   "type": "module",
   "bin": {
