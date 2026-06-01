@@ -1,0 +1,76 @@
+name: Tri-daily Maintenance PR
+
+on:
+  workflow_dispatch:
+    inputs:
+      focus:
+        description: Maintenance focus
+        required: false
+        default: docs
+        type: choice
+        options:
+          - docs
+          - quality
+          - release
+      force:
+        description: Run after the campaign end date
+        required: false
+        default: false
+        type: boolean
+  schedule:
+    - cron: "0 9 * * *"
+      timezone: "Asia/Tokyo"
+    - cron: "0 15 * * *"
+      timezone: "Asia/Tokyo"
+    - cron: "0 21 * * *"
+      timezone: "Asia/Tokyo"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  maintenance:
+    runs-on: ubuntu-latest
+    env:
+      MAINTENANCE_CAMPAIGN_END_DATE: "2026-06-03"
+      EVENT_SCHEDULE: ${{ github.event.schedule }}
+      MANUAL_FOCUS: ${{ github.event_name == 'workflow_dispatch' && inputs.focus || '' }}
+      FORCE_MAINTENANCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force && '1' || '0' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Resolve maintenance focus
+        shell: bash
+        run: |
+          focus="$MANUAL_FOCUS"
+          if [ -z "$focus" ]; then
+            case "$EVENT_SCHEDULE" in
+              "0 9 * * *") focus="docs" ;;
+              "0 15 * * *") focus="quality" ;;
+              "0 21 * * *") focus="release" ;;
+              *) focus="docs" ;;
+            esac
+          fi
+          echo "MAINTENANCE_FOCUS=$focus" >> "$GITHUB_ENV"
+      - run: npm test
+      - run: node ./src/cli.js brief "improve Codex context management for open-source maintainers"
+      - run: node ./scripts/refresh-maintenance-assets.js
+      - run: npm test
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automation/tri-daily-maintenance
+          delete-branch: true
+          title: "chore: tri-daily maintenance refresh"
+          commit-message: "chore: refresh maintenance assets"
+          body: |
+            Automated maintenance refresh for the Codex for Open Source application campaign.
+
+            Checks:
+            - npm test
+            - CLI brief smoke test
+            - maintenance docs refresh
+
+            This workflow updates one reviewable branch instead of pushing directly to main.

@@ -1,0 +1,33 @@
+name: Weekly Version PR
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 1"
+      timezone: "Asia/Tokyo"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  weekly-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm test
+      - run: npm run version:weekly
+      - run: npm test
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automation/weekly-version
+          delete-branch: true
+          title: "chore: weekly version bump"
+          commit-message: "chore: weekly version bump"
+          body: |
+            Weekly automated version bump.
+
+            This PR is intentionally reviewable and does not publish a package automatically.

@@ -1,0 +1,35 @@
+name: Bug report
+description: Report incorrect scanning, scoring, or brief generation.
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Include commands and a minimal repository shape when possible.
+      value: |
+        ```bash
+        codex-token-guard scan
+        codex-token-guard brief "..."
+        ```
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Node.js version, OS, package manager.

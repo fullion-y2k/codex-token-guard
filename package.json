@@ -1,0 +1,35 @@
+{
+  "name": "codex-token-guard",
+  "version": "0.1.0",
+  "description": "Generate focused Codex context briefs to reduce wasted repository context.",
+  "type": "module",
+  "bin": {
+    "codex-token-guard": "./src/cli.js"
+  },
+  "files": [
+    "src",
+    "scripts",
+    "docs",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node ./src/cli.js",
+    "test": "node --test",
+    "maintenance:refresh": "node ./scripts/refresh-maintenance-assets.js",
+    "version:weekly": "node ./scripts/weekly-version-bump.js"
+  },
+  "keywords": [
+    "codex",
+    "ai-agent",
+    "context",
+    "token",
+    "cli",
+    "github-actions"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  }
+}
