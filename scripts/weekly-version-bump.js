@@ -17,9 +17,10 @@ try {
   changelog = "# Changelog\n";
 }
 
-const date = new Date().toISOString().slice(0, 10);
+const date = process.env.WEEKLY_VERSION_DATE || formatDateInTokyo(new Date());
 const entry = `\n## ${nextVersion} - ${date}\n\n- Weekly maintenance version bump.\n`;
-const updated = changelog.replace(/^# Changelog\s*/, `# Changelog\n${entry}\n`);
+const normalized = changelog.startsWith("# Changelog") ? changelog : `# Changelog\n\n${changelog}`;
+const updated = normalized.replace(/^# Changelog\s*/, `# Changelog\n${entry}\n`);
 await fs.writeFile(changelogPath, updated, "utf8");
 
 console.log(`Bumped package version to ${nextVersion}`);
@@ -33,4 +34,15 @@ function incrementPatch(version) {
   const minor = Number(match[2]);
   const patch = Number(match[3]) + 1;
   return `${major}.${minor}.${patch}`;
+}
+
+function formatDateInTokyo(value) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Tokyo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(value);
+  const map = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${map.year}-${map.month}-${map.day}`;
 }

@@ -14,6 +14,8 @@ Schedule:
 
 The workflow opens or updates a pull request on `automation/tri-daily-maintenance`. It refreshes maintenance status, example maintainer documentation, and runs tests.
 
+See [AUTOMATION.md](AUTOMATION.md) for workflow files, schedules, review policy, and campaign stop rules.
+
 ## Ongoing Maintenance
 
 After the campaign, the workflow is configured to stop modifying files after the campaign end date unless manually forced. Weekly Dependabot and weekly version PR workflows remain available for normal maintenance.
