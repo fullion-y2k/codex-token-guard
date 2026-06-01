@@ -18,6 +18,7 @@ on:
         default: false
         type: boolean
   schedule:
+    # 09:00, 15:00, and 21:00 Asia/Tokyo during the application campaign.
     - cron: "0 9 * * *"
       timezone: "Asia/Tokyo"
     - cron: "0 15 * * *"
@@ -29,11 +30,17 @@ permissions:
   contents: write
   pull-requests: write
 
+concurrency:
+  group: tri-daily-maintenance-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   maintenance:
     runs-on: ubuntu-latest
     env:
       MAINTENANCE_CAMPAIGN_END_DATE: "2026-06-03"
+      MAINTENANCE_BRANCH: automation/tri-daily-maintenance
+      MAINTENANCE_RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
       EVENT_SCHEDULE: ${{ github.event.schedule }}
       MANUAL_FOCUS: ${{ github.event_name == 'workflow_dispatch' && inputs.focus || '' }}
       FORCE_MAINTENANCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force && '1' || '0' }}
@@ -61,10 +68,14 @@ jobs:
       - run: npm test
       - uses: peter-evans/create-pull-request@v8
         with:
+          base: main
           branch: automation/tri-daily-maintenance
           delete-branch: true
           title: "chore: tri-daily maintenance refresh"
           commit-message: "chore: refresh maintenance assets"
+          add-paths: |
+            docs/MAINTENANCE_STATUS.md
+            docs/examples/open-source-maintainer-brief.md
           body: |
             Automated maintenance refresh for the Codex for Open Source application campaign.
 
@@ -74,3 +85,4 @@ jobs:
             - maintenance docs refresh
 
             This workflow updates one reviewable branch instead of pushing directly to main.
+            Scheduled file modifications stop after 2026-06-03 unless manually forced.

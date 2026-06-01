@@ -3,12 +3,17 @@ name: Weekly Version PR
 on:
   workflow_dispatch:
   schedule:
+    # Monday 00:00 Asia/Tokyo.
     - cron: "0 0 * * 1"
       timezone: "Asia/Tokyo"
 
 permissions:
   contents: write
   pull-requests: write
+
+concurrency:
+  group: weekly-version-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   weekly-version:
@@ -23,11 +28,20 @@ jobs:
       - run: npm test
       - uses: peter-evans/create-pull-request@v8
         with:
+          base: main
           branch: automation/weekly-version
           delete-branch: true
           title: "chore: weekly version bump"
           commit-message: "chore: weekly version bump"
+          add-paths: |
+            package.json
+            CHANGELOG.md
           body: |
             Weekly automated version bump.
+
+            Checks:
+            - npm test before and after the version bump
+            - patch version update
+            - changelog update
 
             This PR is intentionally reviewable and does not publish a package automatically.

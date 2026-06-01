@@ -47,6 +47,12 @@ codex-token-guard estimate
 codex-token-guard brief "fix login validation"
 ```
 
+## Automation
+
+The repository uses PR-based automation for CI, Dependabot, weekly version bumps, and temporary tri-daily maintenance before the June 3, 2026 Codex for Open Source application target.
+
+See [docs/AUTOMATION.md](docs/AUTOMATION.md) for schedules and review rules.
+
 ## Example
 
 ```bash
