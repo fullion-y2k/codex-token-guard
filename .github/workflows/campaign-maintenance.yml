@@ -1,4 +1,4 @@
-name: Tri-daily Maintenance PR
+name: Campaign Maintenance PR
 
 on:
   workflow_dispatch:
@@ -23,7 +23,7 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: tri-daily-maintenance-${{ github.ref }}
+  group: campaign-maintenance-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MAINTENANCE_CAMPAIGN_END_DATE: "2026-06-03"
-      MAINTENANCE_BRANCH: automation/tri-daily-maintenance
+      MAINTENANCE_BRANCH: automation/campaign-maintenance
       MAINTENANCE_RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
       MANUAL_FOCUS: ${{ inputs.focus || 'docs' }}
       FORCE_MAINTENANCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force && '1' || '0' }}
@@ -51,9 +51,9 @@ jobs:
       - uses: peter-evans/create-pull-request@v8
         with:
           base: main
-          branch: automation/tri-daily-maintenance
+          branch: automation/campaign-maintenance
           delete-branch: true
-          title: "chore: tri-daily maintenance refresh"
+          title: "chore: campaign maintenance refresh"
           commit-message: "chore: refresh maintenance assets"
           add-paths: |
             docs/MAINTENANCE_STATUS.md

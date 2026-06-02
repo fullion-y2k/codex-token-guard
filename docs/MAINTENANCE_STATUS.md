@@ -1,6 +1,6 @@
 # Maintenance Status
 
-Last refreshed: 2026-06-02T01:18:17.557Z
+Last refreshed: 2026-06-02T13:08:16.558Z
 Tokyo date: 2026-06-02
 Campaign end date: 2026-06-03
 Focus: docs
@@ -8,7 +8,7 @@ Focus: docs
 ## Package
 
 - Name: codex-token-guard
-- Version: 0.1.0
+- Version: 0.1.1
 - Runtime: Node.js >=20
 - License: MIT
 
@@ -23,23 +23,24 @@ Focus: docs
 
 - CI runs the Node.js test suite on pull requests and pushes.
 - Dependabot checks npm and GitHub Actions updates weekly.
-- Tri-daily maintenance refreshes this status, example docs, and smoke-tests the CLI until the campaign end date.
+- Codex Desktop App Automations own recurring maintenance and version upgrades.
+- Manual fallback workflows can refresh this status, example docs, and smoke-test the CLI.
 
 ## Automation Evidence
 
-- Workflow: Tri-daily Maintenance PR
-- Event: schedule
-- Run: https://github.com/fullion-y2k/codex-token-guard/actions/runs/26792330028
-- Source commit: 17c52e713b3d301b462909e59f23a0119cdfbd83
-- Review branch: automation/tri-daily-maintenance
+- Workflow: not available outside GitHub Actions
+- Event: local
+- Run: not available outside GitHub Actions
+- Source commit: not available outside GitHub Actions
+- Review branch: automation/campaign-maintenance
 - Direct publish: disabled
 - Direct scheduled pushes to main: disabled
 
 ## Campaign Rules
 
-- Scheduled updates run three times per day during the campaign.
-- Scheduled file modifications stop after 2026-06-03.
-- Manual workflow dispatch can force a maintenance refresh after the campaign.
+- GitHub Actions scheduled maintenance is disabled.
+- Codex Desktop App Automations can run recurring campaign maintenance.
+- Manual workflow dispatch can force a maintenance refresh if Codex Desktop App Automations are unavailable.
 - Automated changes are proposed through pull requests for review.
 
 ## Current Focus

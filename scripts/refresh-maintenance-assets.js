@@ -91,7 +91,7 @@ Focus: ${focus}
 
 - CI runs the Node.js test suite on pull requests and pushes.
 - Dependabot checks npm and GitHub Actions updates weekly.
-- Codex Automations own recurring maintenance and version upgrades.
+- Codex Desktop App Automations own recurring maintenance and version upgrades.
 - Manual fallback workflows can refresh this status, example docs, and smoke-test the CLI.
 
 ## Automation Evidence
@@ -107,8 +107,8 @@ Focus: ${focus}
 ## Campaign Rules
 
 - GitHub Actions scheduled maintenance is disabled.
-- Codex Automations can run recurring campaign maintenance.
-- Manual workflow dispatch can force a maintenance refresh if Codex Automations are unavailable.
+- Codex Desktop App Automations can run recurring campaign maintenance.
+- Manual workflow dispatch can force a maintenance refresh if Codex Desktop App Automations are unavailable.
 - Automated changes are proposed through pull requests for review.
 
 ## Current Focus
@@ -222,6 +222,6 @@ function resolveRunMetadata() {
     eventName: process.env.GITHUB_EVENT_NAME || "local",
     runUrl,
     sha: process.env.GITHUB_SHA || "not available outside GitHub Actions",
-    branch: process.env.MAINTENANCE_BRANCH || "automation/tri-daily-maintenance"
+    branch: process.env.MAINTENANCE_BRANCH || "automation/campaign-maintenance"
   };
 }

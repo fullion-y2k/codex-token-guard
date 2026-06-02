@@ -1,16 +1,16 @@
 # Maintenance Plan
 
-This project uses Codex Automations and reviewable pull requests instead of direct pushes to `main`.
+This project uses Codex Desktop App Automations and reviewable pull requests instead of direct pushes to `main`.
 
 ## Codex-Owned Recurring Maintenance
 
-Recurring version upgrades are owned by Codex Automations. The automation should inspect the current codebase, run tests, apply a small safe maintenance improvement when appropriate, run `npm run version:weekly`, and open a pull request.
+Recurring version upgrades are owned by Codex Desktop App Automations. The automation should inspect the current local codebase, run tests, apply a small safe maintenance improvement when appropriate, run `npm run version:weekly`, and open a pull request.
 
-See [CODEX_AUTOMATION.md](CODEX_AUTOMATION.md) for the exact Codex Automation prompt.
+See [CODEX_AUTOMATION.md](CODEX_AUTOMATION.md) for the exact Codex Desktop App Automation prompt.
 
 ## Temporary High-Frequency Campaign
 
-For the June 3, 2026 Codex for Open Source application target, the repository can run a temporary four-times-per-day Codex Automation through 2026-06-03 23:59 Asia/Tokyo.
+For the June 3, 2026 Codex for Open Source application target, the repository can run a temporary four-times-per-day Codex Desktop App Automation through 2026-06-03 23:59 Asia/Tokyo.
 
 Schedule:
 
@@ -21,11 +21,11 @@ Schedule:
 
 The automation should open a pull request when it finds meaningful changes. It can refresh maintenance status, example maintainer documentation, and run tests.
 
-See [AUTOMATION.md](AUTOMATION.md) for workflow files, Codex Automation ownership, and review policy.
+See [AUTOMATION.md](AUTOMATION.md) for workflow files, Codex Desktop App Automation ownership, and review policy.
 
 ## Ongoing Maintenance
 
-After the campaign, use the weekly Codex Automation for normal maintenance. GitHub scheduled workflows are disabled; manual fallback workflows remain available only for exceptional use.
+After the campaign, use the weekly Codex Desktop App Automation for normal maintenance. GitHub scheduled workflows are disabled; manual fallback workflows remain available only for exceptional use.
 
 ## Review Policy
 

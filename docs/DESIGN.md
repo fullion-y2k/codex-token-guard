@@ -171,8 +171,8 @@ Automation is intentionally PR-based:
 
 - CI validates pushes and pull requests.
 - Dependabot opens weekly dependency and GitHub Actions update PRs.
-- Codex Automations own recurring version upgrades and open reviewable PRs.
+- Codex Desktop App Automations own recurring version upgrades and open reviewable PRs.
 - Manual GitHub Actions workflows remain as fallbacks only and have no schedule triggers.
-- A temporary four-times-per-day Codex Automation can refresh maintainer-facing docs, examples, and smoke-test the CLI through 2026-06-03 23:59 Asia/Tokyo.
+- A temporary four-times-per-day Codex Desktop App Automation can refresh maintainer-facing docs, examples, and smoke-test the CLI through 2026-06-03 23:59 Asia/Tokyo.
 
 The version automation does not publish packages automatically. Release publishing can be added later after package ownership and npm permissions are confirmed.

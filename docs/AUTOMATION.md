@@ -1,6 +1,6 @@
 # Automation
 
-`codex-token-guard` uses Codex Automations for recurring maintenance and GitHub Actions only for PR verification or manual fallback jobs.
+`codex-token-guard` uses Codex Desktop App Automations for recurring maintenance and GitHub Actions only for PR verification or manual fallback jobs.
 
 ## Workflows
 
@@ -9,13 +9,13 @@
 | CI | `.github/workflows/ci.yml` | push and pull request to `main` | Run the Node.js test suite on Node.js 20 and 22. |
 | Dependabot | `.github/dependabot.yml` | weekly | Open dependency and GitHub Actions update PRs. |
 | Weekly Version PR | `.github/workflows/weekly-version.yml` | manual dispatch only | Fallback job that bumps the patch version, updates `CHANGELOG.md`, and opens a PR. |
-| Tri-daily Maintenance PR | `.github/workflows/tri-daily-maintenance.yml` | manual dispatch only | Fallback job that smoke-tests the CLI and refreshes maintainer-facing docs. |
+| Campaign Maintenance PR | `.github/workflows/campaign-maintenance.yml` | manual dispatch only | Fallback job that smoke-tests the CLI and refreshes maintainer-facing docs. |
 
-GitHub Actions schedules are disabled for repository maintenance and version upgrades. Recurring work is configured in Codex Automations instead, using the prompt in [CODEX_AUTOMATION.md](CODEX_AUTOMATION.md).
+GitHub Actions schedules are disabled for repository maintenance and version upgrades. Recurring work is configured in Codex Desktop App Automations instead, using the prompt in [CODEX_AUTOMATION.md](CODEX_AUTOMATION.md). These are not Codex Cloud tasks.
 
-## Codex Automation Ownership
+## Codex Desktop Automation Ownership
 
-Codex Automations should own these recurring tasks:
+Codex Desktop App Automations should own these recurring tasks:
 
 - Weekly version upgrade from the current codebase.
 - Optional campaign maintenance that refreshes docs and examples.
