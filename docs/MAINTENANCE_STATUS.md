@@ -1,7 +1,7 @@
 # Maintenance Status
 
-Last refreshed: 2026-06-01T13:32:57.280Z
-Tokyo date: 2026-06-01
+Last refreshed: 2026-06-02T01:18:17.557Z
+Tokyo date: 2026-06-02
 Campaign end date: 2026-06-03
 Focus: docs
 
@@ -27,10 +27,10 @@ Focus: docs
 
 ## Automation Evidence
 
-- Workflow: not available outside GitHub Actions
-- Event: local
-- Run: not available outside GitHub Actions
-- Source commit: not available outside GitHub Actions
+- Workflow: Tri-daily Maintenance PR
+- Event: schedule
+- Run: https://github.com/fullion-y2k/codex-token-guard/actions/runs/26792330028
+- Source commit: 17c52e713b3d301b462909e59f23a0119cdfbd83
 - Review branch: automation/tri-daily-maintenance
 - Direct publish: disabled
 - Direct scheduled pushes to main: disabled
