@@ -382,7 +382,7 @@ Required files:
 - `docs/MAINTAINER_WORKFLOWS.md`
 - `docs/CODEX_FOR_OSS_APPLICATION_ASSESSMENT.md`
 - `.github/workflows/ci.yml`
-- `.github/workflows/tri-daily-maintenance.yml`
+- `.github/workflows/campaign-maintenance.yml`
 - `.github/workflows/weekly-version.yml`
 - `.github/dependabot.yml`
 - issue templates
@@ -390,7 +390,7 @@ Required files:
 
 ## 14. Automation Requirements
 
-All automation must use pull requests. GitHub Actions scheduled maintenance is disabled; recurring version upgrades and campaign maintenance are owned by Codex Automations. No automation may push directly to `main`.
+All automation must use pull requests. GitHub Actions scheduled maintenance is disabled; recurring version upgrades and campaign maintenance are owned by Codex Desktop App Automations. No automation may push directly to `main`.
 
 ### 14.1 CI
 
@@ -426,7 +426,7 @@ Schedule:
 
 ### 14.3 Weekly Version Upgrade
 
-Codex Automation:
+Codex Desktop App Automation:
 
 ```text
 docs/CODEX_AUTOMATION.md
@@ -454,7 +454,7 @@ This workflow must remain `workflow_dispatch` only.
 
 ### 14.4 Campaign Maintenance Automation
 
-Codex Automation:
+Codex Desktop App Automation:
 
 ```text
 docs/CODEX_AUTOMATION.md
@@ -482,7 +482,7 @@ Actions:
 Campaign stop rule:
 
 - campaign automation stops after 2026-06-03 23:59 Asia/Tokyo
-- manual `workflow_dispatch` can refresh maintenance assets if Codex Automations are unavailable
+- manual `workflow_dispatch` can refresh maintenance assets if Codex Desktop App Automations are unavailable
 
 Review policy:
 
@@ -494,7 +494,7 @@ Review policy:
 Manual fallback:
 
 ```text
-.github/workflows/tri-daily-maintenance.yml
+.github/workflows/campaign-maintenance.yml
 ```
 
 This workflow must remain `workflow_dispatch` only.
@@ -538,7 +538,7 @@ Required:
 - confirm repository visibility is public
 - confirm GitHub profile visibility is public
 - verify CI passes
-- run campaign Codex Automation at least once
+- run campaign Codex Desktop App Automation at least once
 - create `v0.1.0` release if possible
 - prepare Codex for Open Source application text
 
@@ -570,7 +570,7 @@ The MVP is acceptable when:
 - README clearly explains that token counts are estimates
 - GitHub Actions are PR-based
 - GitHub scheduled maintenance workflows are disabled
-- campaign Codex Automation is configured for four-times-per-day June 3, 2026 application preparation
+- campaign Codex Desktop App Automation is configured for four-times-per-day June 3, 2026 application preparation
 
 ## 18. Risks
 
@@ -607,7 +607,7 @@ Mitigation:
 
 ### Automation risk
 
-Codex Automations or manual fallback workflows can fail or be delayed.
+Codex Desktop App Automations or manual fallback workflows can fail or be delayed.
 
 Mitigation:
 
