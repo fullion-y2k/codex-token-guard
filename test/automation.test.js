@@ -16,32 +16,44 @@ test("CI workflow matches the automation specification", async () => {
 test("tri-daily maintenance is PR-based and campaign-limited", async () => {
   const workflow = await read(".github/workflows/tri-daily-maintenance.yml");
 
-  assert.match(workflow, /09:00, 15:00, and 21:00 Asia\/Tokyo/);
-  assert.match(workflow, /GitHub Actions cron is UTC/);
-  assert.match(workflow, /cron:\s*"0 0 \* \* \*"/);
-  assert.match(workflow, /cron:\s*"0 6 \* \* \*"/);
-  assert.match(workflow, /cron:\s*"0 12 \* \* \*"/);
-  assert.match(workflow, /"0 0 \* \* \*"\) focus="docs"/);
-  assert.match(workflow, /"0 6 \* \* \*"\) focus="quality"/);
-  assert.match(workflow, /"0 12 \* \* \*"\) focus="release"/);
+  assert.match(workflow, /workflow_dispatch:/);
+  assert.doesNotMatch(workflow, /^\s*schedule:/m);
+  assert.doesNotMatch(workflow, /cron:/);
+  assert.match(workflow, /docs/);
+  assert.match(workflow, /quality/);
+  assert.match(workflow, /release/);
   assert.match(workflow, /MAINTENANCE_CAMPAIGN_END_DATE:\s*"2026-06-03"/);
   assert.match(workflow, /peter-evans\/create-pull-request@v8/);
   assert.match(workflow, /branch:\s*automation\/tri-daily-maintenance/);
   assert.match(workflow, /add-paths:\s*\|[\s\S]*docs\/MAINTENANCE_STATUS\.md/);
+  assert.match(workflow, /Recurring maintenance is owned by Codex Automations/);
   assert.doesNotMatch(workflow, /git push[\s\S]*main/);
 });
 
 test("weekly version automation opens a reviewable PR", async () => {
   const workflow = await read(".github/workflows/weekly-version.yml");
 
-  assert.match(workflow, /Monday 00:00 Asia\/Tokyo/);
-  assert.match(workflow, /GitHub Actions cron is UTC/);
-  assert.match(workflow, /cron:\s*"0 15 \* \* 0"/);
+  assert.match(workflow, /workflow_dispatch:/);
+  assert.doesNotMatch(workflow, /^\s*schedule:/m);
+  assert.doesNotMatch(workflow, /cron:/);
   assert.match(workflow, /npm run version:weekly/);
   assert.match(workflow, /peter-evans\/create-pull-request@v8/);
   assert.match(workflow, /branch:\s*automation\/weekly-version/);
   assert.match(workflow, /add-paths:\s*\|[\s\S]*package\.json[\s\S]*CHANGELOG\.md/);
+  assert.match(workflow, /Recurring version upgrades are owned by Codex Automations/);
   assert.doesNotMatch(workflow, /npm publish|gh release create/);
+});
+
+test("Codex Automation playbook owns recurring version upgrades", async () => {
+  const doc = await read("docs/CODEX_AUTOMATION.md");
+  const automation = await read("docs/AUTOMATION.md");
+
+  assert.match(doc, /Every Monday at 00:00 Asia\/Tokyo/);
+  assert.match(doc, /npm run version:weekly/);
+  assert.match(doc, /Do not push directly to main/);
+  assert.match(doc, /Open a pull request to main/);
+  assert.match(automation, /GitHub Actions schedules are disabled/);
+  assert.match(automation, /Recurring work is configured in Codex Automations/);
 });
 
 test("dependabot checks npm and GitHub Actions weekly", async () => {
