@@ -167,11 +167,12 @@ Examples:
 
 ## Automation design
 
-GitHub automation is intentionally PR-based:
+Automation is intentionally PR-based:
 
 - CI validates pushes and pull requests.
 - Dependabot opens weekly dependency and GitHub Actions update PRs.
-- Weekly version workflow opens a patch-version PR.
-- A temporary tri-daily maintenance workflow can refresh maintainer-facing docs and smoke-test the CLI before the June 3, 2026 Codex for Open Source application target.
+- Codex Automations own recurring version upgrades and open reviewable PRs.
+- Manual GitHub Actions workflows remain as fallbacks only and have no schedule triggers.
+- A temporary four-times-per-day Codex Automation can refresh maintainer-facing docs, examples, and smoke-test the CLI through 2026-06-03 23:59 Asia/Tokyo.
 
-The version workflow does not publish packages automatically. Release publishing can be added later after package ownership and npm permissions are confirmed.
+The version automation does not publish packages automatically. Release publishing can be added later after package ownership and npm permissions are confirmed.
