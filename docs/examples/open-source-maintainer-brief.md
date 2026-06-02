@@ -4,12 +4,12 @@ This example shows how an open-source maintainer could use codex-token-guard bef
 
 ## Maintainer Task
 
-Fix a bug report about login validation without loading generated files, lockfiles, build output, or secret-like configuration.
+Investigate a failing relevance-scoring test without loading generated snapshots, build output, or secret-like configuration.
 
 ## Command
 
 ```bash
-codex-token-guard brief "fix login validation bug reported by users"
+codex-token-guard brief "investigate failing relevance scoring test"
 ```
 
 ## Codex Prompt
@@ -23,7 +23,7 @@ Fix the issue and run the listed verification commands.
 
 ## Expected Maintainer Benefit
 
-- Smaller initial context for Codex.
-- Clear file boundaries for review.
-- Fewer accidental reads of generated or sensitive files.
-- Repeatable issue triage and PR review workflow.
+- Smaller initial context for test debugging.
+- Clear separation between source files and generated artifacts.
+- Focused validation commands for maintainers.
+- Repeatable quality checks before asking Codex to edit code.

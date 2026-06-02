@@ -1,14 +1,14 @@
 # Maintenance Status
 
-Last refreshed: 2026-06-02T01:18:17.557Z
+Last refreshed: 2026-06-02T07:32:09.187Z
 Tokyo date: 2026-06-02
 Campaign end date: 2026-06-03
-Focus: docs
+Focus: quality
 
 ## Package
 
 - Name: codex-token-guard
-- Version: 0.1.0
+- Version: 0.1.1
 - Runtime: Node.js >=20
 - License: MIT
 
@@ -29,8 +29,8 @@ Focus: docs
 
 - Workflow: Tri-daily Maintenance PR
 - Event: schedule
-- Run: https://github.com/fullion-y2k/codex-token-guard/actions/runs/26792330028
-- Source commit: 17c52e713b3d301b462909e59f23a0119cdfbd83
+- Run: https://github.com/fullion-y2k/codex-token-guard/actions/runs/26805315657
+- Source commit: 0bbe82c1fe3fd4723a505059b869075a51d53b85
 - Review branch: automation/tri-daily-maintenance
 - Direct publish: disabled
 - Direct scheduled pushes to main: disabled
@@ -44,7 +44,7 @@ Focus: docs
 
 ## Current Focus
 
-- Keep README and maintainer workflow documentation clear.
-- Refresh examples for issue triage, PR review, and release maintenance.
-- Keep public project messaging aligned with Codex context reduction.
+- Keep tests passing.
+- Check relevance scoring behavior.
+- Confirm generated and secret-like files remain excluded.
 
