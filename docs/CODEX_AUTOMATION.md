@@ -42,23 +42,25 @@ If the repository is not in a state where a version upgrade is safe, stop and re
 
 ## Campaign Maintenance
 
-The earlier tri-daily GitHub Actions schedule is disabled. If high-frequency maintenance is still needed in Codex, create a separate temporary Codex Automation with this schedule:
+The earlier tri-daily GitHub Actions schedule is disabled. For the application campaign, create a separate temporary Codex Automation that runs four times per day through 2026-06-03 23:59 Asia/Tokyo.
 
 - 09:00 Asia/Tokyo: documentation focus
+- 12:00 Asia/Tokyo: example and maintainer workflow focus
 - 15:00 Asia/Tokyo: quality focus
 - 21:00 Asia/Tokyo: release focus
 
 Prompt:
 
 ```text
-During the Codex for Open Source application campaign, return to the fullion-y2k/codex-token-guard repository and perform one focused maintenance pass.
+Until 2026-06-03 23:59 Asia/Tokyo, return to the fullion-y2k/codex-token-guard repository four times per day at 09:00, 12:00, 15:00, and 21:00 Asia/Tokyo and perform one focused maintenance pass.
 
 Use the focus for this run:
 - 09:00 Asia/Tokyo: docs
+- 12:00 Asia/Tokyo: examples
 - 15:00 Asia/Tokyo: quality
 - 21:00 Asia/Tokyo: release
 
-Run npm test, refresh only useful docs or examples, run npm test again, and open a reviewable PR if there are meaningful changes. Do not push directly to main, do not publish, and do not create empty commits.
+Run npm test, refresh only useful docs, examples, or maintainer workflow notes, run npm test again, and open a reviewable PR if there are meaningful changes. Do not push directly to main, do not publish, and do not create empty commits. After 2026-06-03 23:59 Asia/Tokyo, stop this campaign automation and leave the weekly version automation as the ongoing maintenance path.
 ```
 
 ## Manual Fallback

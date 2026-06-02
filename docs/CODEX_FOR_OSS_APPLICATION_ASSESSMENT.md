@@ -43,7 +43,7 @@ The application form asks for:
 | --- | --- | --- |
 | Public open-source repository | Not yet complete | Must publish on GitHub and make repo public. |
 | Primary/core maintainer role | Strong if created by applicant | A new project can clearly establish primary maintainer status. |
-| Active maintenance | Moderate | CI, Dependabot, weekly version PR, and tri-daily maintenance workflow help. |
+| Active maintenance | Moderate | CI, Dependabot, Codex Automation version upgrades, and temporary high-frequency campaign maintenance help. |
 | Meaningful usage | Weak | New project will likely have no stars, downloads, users, or external contributors by June 3. |
 | Broad adoption | Weak | This is the biggest gap. |
 | Ecosystem importance | Moderate potential | The problem is directly relevant to Codex and OSS maintainers, but importance is not yet proven. |
@@ -154,7 +154,7 @@ Mitigation:
 - make the purpose explicit
 - avoid empty commits
 - merge only meaningful PRs
-- stop or reduce frequency after the June 3 application
+- stop the temporary four-times-per-day campaign automation after the June 3 application
 
 ### Risk: unverified runtime
 

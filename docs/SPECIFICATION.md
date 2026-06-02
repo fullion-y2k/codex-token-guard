@@ -390,7 +390,7 @@ Required files:
 
 ## 14. Automation Requirements
 
-All automation must use pull requests. Scheduled workflows must not push directly to `main`.
+All automation must use pull requests. GitHub Actions scheduled maintenance is disabled; recurring version upgrades and campaign maintenance are owned by Codex Automations. No automation may push directly to `main`.
 
 ### 14.1 CI
 
@@ -424,16 +424,18 @@ Schedule:
 - weekly npm checks
 - weekly GitHub Actions checks
 
-### 14.3 Weekly Version PR
+### 14.3 Weekly Version Upgrade
 
-Workflow:
+Codex Automation:
 
 ```text
-.github/workflows/weekly-version.yml
+docs/CODEX_AUTOMATION.md
 ```
 
 Purpose:
 
+- inspect the current codebase
+- apply a small safe maintenance improvement when appropriate
 - bump patch version
 - update `CHANGELOG.md`
 - open a reviewable pull request
@@ -442,21 +444,30 @@ Schedule:
 
 - Monday 00:00 Asia/Tokyo
 
-### 14.4 Tri-daily Maintenance PR
-
-Workflow:
+Manual fallback:
 
 ```text
-.github/workflows/tri-daily-maintenance.yml
+.github/workflows/weekly-version.yml
+```
+
+This workflow must remain `workflow_dispatch` only.
+
+### 14.4 Campaign Maintenance Automation
+
+Codex Automation:
+
+```text
+docs/CODEX_AUTOMATION.md
 ```
 
 Temporary campaign target:
 
-- June 1, 2026 through June 3, 2026
+- through 2026-06-03 23:59 Asia/Tokyo
 
 Schedule:
 
 - 09:00 Asia/Tokyo: documentation focus
+- 12:00 Asia/Tokyo: example and maintainer workflow focus
 - 15:00 Asia/Tokyo: quality focus
 - 21:00 Asia/Tokyo: release focus
 
@@ -466,12 +477,12 @@ Actions:
 - run CLI smoke test with `brief`
 - refresh `docs/MAINTENANCE_STATUS.md`
 - refresh `docs/examples/open-source-maintainer-brief.md`
-- open or update a PR on `automation/tri-daily-maintenance`
+- open a reviewable PR if there are meaningful changes
 
 Campaign stop rule:
 
-- scheduled file modifications stop after `2026-06-03`
-- manual `workflow_dispatch` can force a run after that date
+- campaign automation stops after 2026-06-03 23:59 Asia/Tokyo
+- manual `workflow_dispatch` can refresh maintenance assets if Codex Automations are unavailable
 
 Review policy:
 
@@ -479,6 +490,14 @@ Review policy:
 - no empty activity commits
 - no direct publishing
 - no direct pushes to `main`
+
+Manual fallback:
+
+```text
+.github/workflows/tri-daily-maintenance.yml
+```
+
+This workflow must remain `workflow_dispatch` only.
 
 ## 15. Codex for Open Source Application Positioning
 
@@ -519,7 +538,7 @@ Required:
 - confirm repository visibility is public
 - confirm GitHub profile visibility is public
 - verify CI passes
-- run tri-daily maintenance workflow at least once
+- run campaign Codex Automation at least once
 - create `v0.1.0` release if possible
 - prepare Codex for Open Source application text
 
@@ -550,7 +569,8 @@ The MVP is acceptable when:
 - secret-like files are excluded from recommendations
 - README clearly explains that token counts are estimates
 - GitHub Actions are PR-based
-- tri-daily maintenance is configured for June 3, 2026 application preparation
+- GitHub scheduled maintenance workflows are disabled
+- campaign Codex Automation is configured for four-times-per-day June 3, 2026 application preparation
 
 ## 18. Risks
 
@@ -585,9 +605,9 @@ Mitigation:
 - do not upload file contents
 - include security policy
 
-### GitHub automation risk
+### Automation risk
 
-Scheduled workflows can fail or be delayed.
+Codex Automations or manual fallback workflows can fail or be delayed.
 
 Mitigation:
 

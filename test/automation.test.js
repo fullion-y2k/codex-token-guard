@@ -52,6 +52,8 @@ test("Codex Automation playbook owns recurring version upgrades", async () => {
   assert.match(doc, /npm run version:weekly/);
   assert.match(doc, /Do not push directly to main/);
   assert.match(doc, /Open a pull request to main/);
+  assert.match(doc, /four times per day at 09:00, 12:00, 15:00, and 21:00 Asia\/Tokyo/);
+  assert.match(doc, /After 2026-06-03 23:59 Asia\/Tokyo, stop this campaign automation/);
   assert.match(automation, /GitHub Actions schedules are disabled/);
   assert.match(automation, /Recurring work is configured in Codex Automations/);
 });

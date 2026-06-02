@@ -10,11 +10,12 @@ See [CODEX_AUTOMATION.md](CODEX_AUTOMATION.md) for the exact Codex Automation pr
 
 ## Temporary High-Frequency Campaign
 
-For the June 3, 2026 Codex for Open Source application target, the repository can run a tri-daily Codex Automation.
+For the June 3, 2026 Codex for Open Source application target, the repository can run a temporary four-times-per-day Codex Automation through 2026-06-03 23:59 Asia/Tokyo.
 
 Schedule:
 
 - 09:00 Asia/Tokyo: documentation focus
+- 12:00 Asia/Tokyo: example and maintainer workflow focus
 - 15:00 Asia/Tokyo: quality focus
 - 21:00 Asia/Tokyo: release focus
 
