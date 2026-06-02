@@ -49,9 +49,9 @@ codex-token-guard brief "fix login validation"
 
 ## Automation
 
-The repository uses PR-based automation for CI, Dependabot, weekly version bumps, and temporary tri-daily maintenance before the June 3, 2026 Codex for Open Source application target.
+The repository uses Codex Automations for recurring version upgrades and maintenance. GitHub Actions schedules are disabled for repository maintenance; GitHub Actions remains for CI and manual fallback workflows.
 
-See [docs/AUTOMATION.md](docs/AUTOMATION.md) for schedules and review rules.
+See [docs/CODEX_AUTOMATION.md](docs/CODEX_AUTOMATION.md) for the Codex Automation prompt and [docs/AUTOMATION.md](docs/AUTOMATION.md) for review rules.
 
 ## Example
 
@@ -90,10 +90,10 @@ This repository includes:
 
 - CI on pull requests and pushes.
 - Dependabot weekly dependency and GitHub Actions update checks.
-- A weekly version PR workflow that bumps the patch version and updates `CHANGELOG.md`.
-- A temporary tri-daily maintenance workflow for the June 3, 2026 Codex for Open Source application campaign.
+- A Codex Automation prompt for weekly version upgrades.
+- Manual fallback workflows for weekly version bumps and temporary maintenance.
 
-The weekly version workflow opens a pull request instead of committing directly to `main`.
+The Codex Automation opens a pull request instead of committing directly to `main`.
 
 See [Specification](docs/SPECIFICATION.md), [Maintainer Workflows](docs/MAINTAINER_WORKFLOWS.md), and [Maintenance Plan](docs/MAINTENANCE_PLAN.md).
 

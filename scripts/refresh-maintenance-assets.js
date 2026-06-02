@@ -91,7 +91,8 @@ Focus: ${focus}
 
 - CI runs the Node.js test suite on pull requests and pushes.
 - Dependabot checks npm and GitHub Actions updates weekly.
-- Tri-daily maintenance refreshes this status, example docs, and smoke-tests the CLI until the campaign end date.
+- Codex Automations own recurring maintenance and version upgrades.
+- Manual fallback workflows can refresh this status, example docs, and smoke-test the CLI.
 
 ## Automation Evidence
 
@@ -105,9 +106,9 @@ Focus: ${focus}
 
 ## Campaign Rules
 
-- Scheduled updates run three times per day during the campaign.
-- Scheduled file modifications stop after ${endDate || "the configured campaign end date"}.
-- Manual workflow dispatch can force a maintenance refresh after the campaign.
+- GitHub Actions scheduled maintenance is disabled.
+- Codex Automations can run recurring campaign maintenance.
+- Manual workflow dispatch can force a maintenance refresh if Codex Automations are unavailable.
 - Automated changes are proposed through pull requests for review.
 
 ## Current Focus

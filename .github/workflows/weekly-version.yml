@@ -2,10 +2,6 @@ name: Weekly Version PR
 
 on:
   workflow_dispatch:
-  schedule:
-    # Monday 00:00 Asia/Tokyo.
-    # GitHub Actions cron is UTC.
-    - cron: "0 15 * * 0"
 
 permissions:
   contents: write
@@ -37,11 +33,11 @@ jobs:
             package.json
             CHANGELOG.md
           body: |
-            Weekly automated version bump.
+            Manual fallback for the weekly version bump.
 
             Checks:
             - npm test before and after the version bump
             - patch version update
             - changelog update
 
-            This PR is intentionally reviewable and does not publish a package automatically.
+            Recurring version upgrades are owned by Codex Automations. This PR is intentionally reviewable and does not publish a package automatically.
