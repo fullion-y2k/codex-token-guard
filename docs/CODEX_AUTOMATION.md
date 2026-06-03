@@ -10,7 +10,7 @@ Register these as Codex Desktop App Automations:
 
 - Project: `C:\Users\y2kpu\Documents\Codex\2026-06-01\githumco`
 - Repository: `fullion-y2k/codex-token-guard`
-- Run mode: new background worktree for Git repositories
+- Run mode: dedicated background worktree for Git repositories
 - Output: reviewable pull request to `main`
 - Sandbox: workspace-write, with network/GitHub access only when PR creation requires it
 - Model and reasoning: leave defaults unless the automation output is too slow or too broad
@@ -26,6 +26,9 @@ Schedule:
 Automation prompt:
 
 ```text
+Preflight:
+Before doing repository work, verify that this automation is running with a writable workspace sandbox and a dedicated background Git worktree for C:\Users\y2kpu\Documents\Codex\2026-06-01\githumco. If the sandbox is read-only or the worktree is not writable, stop immediately and report the automation setting mismatch. Do not attempt file edits, npm test, commits, pushes, or PR setup in read-only mode.
+
 Every Monday at 00:00 Asia/Tokyo, use Codex Desktop App Automation to work in the local fullion-y2k/codex-token-guard repository at C:\Users\y2kpu\Documents\Codex\2026-06-01\githumco.
 
 Goal:
@@ -65,6 +68,9 @@ The earlier GitHub Actions schedule is disabled. For the application campaign, c
 Prompt:
 
 ```text
+Preflight:
+Before doing repository work, verify that this automation is running with a writable workspace sandbox and a dedicated background Git worktree for C:\Users\y2kpu\Documents\Codex\2026-06-01\githumco. If the sandbox is read-only or the worktree is not writable, stop immediately and report the automation setting mismatch. Do not attempt file edits, npm test, commits, pushes, or PR setup in read-only mode.
+
 Until 2026-06-03 23:59 Asia/Tokyo, use Codex Desktop App Automation to return to the local fullion-y2k/codex-token-guard repository at C:\Users\y2kpu\Documents\Codex\2026-06-01\githumco four times per day at 09:00, 12:00, 15:00, and 21:00 Asia/Tokyo and perform one focused maintenance pass.
 
 Use the focus for this run:
